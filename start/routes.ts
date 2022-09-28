@@ -25,6 +25,7 @@ Route.put("/users/:id", "UsersController.update");
 Route.delete("/users/:id", "UsersController.destroy");
 
 Route.post("/tasks", "TasksController.create");
-Route.get("/tasks/:id", "TasksController.index");
+Route.get("/tasks", "TasksController.index");
 Route.put("/tasks/:id", "TasksController.update");
 Route.delete("/tasks/:id", "TasksController.destroy");
+Route.get("/tasks/:id", "TasksController.show");
