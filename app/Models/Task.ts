@@ -17,6 +17,9 @@ export default class Task extends BaseModel {
   user: HasOne<typeof User>;
 
   @column()
+  user_id: string;
+
+  @column()
   title: string;
 
   @column()
