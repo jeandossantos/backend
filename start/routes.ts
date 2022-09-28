@@ -23,3 +23,7 @@ import Route from "@ioc:Adonis/Core/Route";
 Route.post("/users", "UsersController.create");
 Route.put("/users/:id", "UsersController.update");
 Route.delete("/users/:id", "UsersController.destroy");
+
+Route.post("/tasks", "TasksController.create");
+Route.get("/tasks/:id", "TasksController.index");
+Route.put("/tasks/:id", "TasksController.update");
