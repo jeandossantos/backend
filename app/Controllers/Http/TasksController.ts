@@ -68,4 +68,12 @@ export default class TasksController {
 
     return task;
   }
+
+  async destroy({ request }: HttpContextContract) {
+    const taskId = request.param("id");
+
+    const task = await Task.findOrFail(taskId);
+
+    await task.delete();
+  }
 }
