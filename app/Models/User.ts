@@ -28,17 +28,4 @@ export default class User extends BaseModel {
   public static async createUUID(model: User) {
     model.id = uuid();
   }
-
-  /*   @column()
-  name: string;
-
-  @column()
-  description: string;
-
-  @column()
-  done: boolean;
-
-  @column()
-  deadline: Date | null;
- */
 }
