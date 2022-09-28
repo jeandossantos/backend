@@ -31,12 +31,13 @@ export default class TasksController {
   }
 
   async index({ request }: HttpContextContract) {
-    const userId = request.param("id");
     const { page } = request.qs();
     const limit = 4;
 
+    const user_id = request.param("id");
+
     const tasks = await Task.query()
-      .where("user_id", userId)
+      .where("user_id", user_id)
       .orderBy("createdAt", "desc")
       .paginate(page || 1, limit);
 
