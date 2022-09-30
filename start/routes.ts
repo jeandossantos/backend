@@ -33,5 +33,8 @@ Route.group(() => {
   Route.get("/tasks/:id", "TasksController.show");
   Route.get("/users/:id/tasks", "TasksController.index");
   Route.delete("/tasks/:id", "TasksController.destroy");
-  Route.patch("/tasks/:id/markAsDone", "TasksController.markAsDone");
+  Route.patch(
+    "/tasks/:id/markAsDoneOrPending",
+    "TasksController.markAsDoneOrPending"
+  );
 }).middleware("auth");
