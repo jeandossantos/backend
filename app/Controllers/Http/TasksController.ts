@@ -86,7 +86,7 @@ export default class TasksController {
     return task;
   }
 
-  async markAsDone({ request, auth, response }: HttpContextContract) {
+  async markAsDoneOrPending({ request, auth, response }: HttpContextContract) {
     const taskId = request.param("id");
 
     const userId = auth.user?.id;
@@ -102,7 +102,7 @@ export default class TasksController {
       );
     }
 
-    task!.done = true;
+    task!.done = !task.done;
 
     await task.save();
   }
