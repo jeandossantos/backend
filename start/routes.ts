@@ -23,12 +23,15 @@ import Route from "@ioc:Adonis/Core/Route";
 Route.post("/login", "AuthController.login");
 Route.post("/logout", "AuthController.logout");
 
-Route.post("/users", "UsersController.create");
-Route.put("/users/:id", "UsersController.update");
-Route.delete("/users/:id", "UsersController.destroy");
+Route.group(() => {
+  Route.post("/users", "UsersController.create");
+  Route.put("/users/:id", "UsersController.update");
+  Route.delete("/users/:id", "UsersController.destroy");
 
-Route.post("/tasks", "TasksController.create");
-Route.put("/tasks/:id", "TasksController.update");
-Route.get("/tasks/:id", "TasksController.show");
-Route.get("/users/:id/tasks", "TasksController.index");
-Route.delete("/tasks/:id", "TasksController.destroy");
+  Route.post("/tasks", "TasksController.create");
+  Route.put("/tasks/:id", "TasksController.update");
+  Route.get("/tasks/:id", "TasksController.show");
+  Route.get("/users/:id/tasks", "TasksController.index");
+  Route.delete("/tasks/:id", "TasksController.destroy");
+  Route.patch("/tasks/:id/markAsDone", "TasksController.markAsDone");
+}).middleware("auth");

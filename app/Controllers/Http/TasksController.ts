@@ -85,4 +85,25 @@ export default class TasksController {
 
     return task;
   }
+
+  async markAsDone({ request, auth, response }: HttpContextContract) {
+    const taskId = request.param("id");
+
+    const userId = auth.user?.id;
+
+    const task = await Task.query()
+      .where("id", taskId)
+      .where("user_id", userId!)
+      .first();
+
+    if (!task) {
+      return response.badRequest(
+        "Task does not exist or does not belong to this user"
+      );
+    }
+
+    task!.done = true;
+
+    await task.save();
+  }
 }
