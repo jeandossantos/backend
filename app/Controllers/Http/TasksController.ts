@@ -31,13 +31,16 @@ export default class TasksController {
   }
 
   async index({ request }: HttpContextContract) {
-    const { page } = request.qs();
+    const { page, search = "" } = request.qs();
     const limit = 4;
+
+    console.log(search);
 
     const user_id = request.param("id");
 
     const tasks = await Task.query()
       .where("user_id", user_id)
+      .whereILike("title", `%${search}%`)
       .orderBy("createdAt", "desc")
       .paginate(page || 1, limit);
 

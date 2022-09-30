@@ -28,7 +28,11 @@ export default class Task extends BaseModel {
   @column()
   done: boolean;
 
-  @column()
+  @column({
+    serialize: (value: number) => {
+      return Number(value);
+    },
+  })
   priority: number;
 
   @column()
